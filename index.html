@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KDG Enterprise</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">KDG</div>
+    <nav>
+      <a data-page="home" class="active">Home</a>
+      <a data-page="about">About</a>
+      <a data-page="gallery">Gallery</a>
+      <a data-page="contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="page active" id="home">
+    <div class="hero">
+      <div id="hero-text">Interior Designs That Inspire</div>
+    </div>
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div class="service-box"><h3>Interior Design</h3><p>Modern and customized designs.</p></div>
+        <div class="service-box"><h3>Construction</h3><p>Reliable and quality-driven builds.</p></div>
+        <div class="service-box"><h3>Wood Work</h3><p>Wardrobes, kitchens, and more.</p></div>
+        <div class="service-box"><h3>Accessories</h3><p>Doors, windows, kitchen fittings.</p></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="page" id="about">
+    <h2>About Us</h2>
+    <p>KDG Enterprise offers creative, cost-effective interior solutions from Rohini, Delhi.</p>
+  </section>
+
+  <section class="page" id="gallery">
+    <h2>Project Gallery</h2>
+    <div class="gallery">
+      <img src="https://source.unsplash.com/400x300/?wardrobe" alt="Wardrobe">
+      <img src="https://source.unsplash.com/400x300/?kitchen" alt="Kitchen">
+      <img src="https://source.unsplash.com/400x300/?interior" alt="Interior">
+    </div>
+  </section>
+
+  <section class="page" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <p><strong>Address:</strong> Rajiv Nagar, Sector 22, Rohini, Delhi - 86</p>
+      <p><strong>Email:</strong> rohit.khullar14@gmail.com</p>
+      <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
+    </div>
+    <iframe src="https://www.google.com/maps?q=Rajiv+Nagar,+Sector+22,+Rohini,+Delhi+-+86&output=embed"></iframe>
+  </section>
+
+  <footer>&copy; 2025 KDG Enterprise</footer>
+
+  <script>
+    const links = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section.page');
+    links.forEach(link => link.addEventListener('click', () => {
+      document.querySelector('nav a.active').classList.remove('active');
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      document.getElementById(link.dataset.page).classList.add('active');
+    }));
+
+    const heroTexts = ["Interior Designs That Inspire", "Elegant Kitchens & Wardrobes", "Creative Exterior Designs"];
+    let idx = 0;
+    setInterval(() => {
+      const el = document.getElementById("hero-text");
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.textContent = heroTexts[idx = (idx + 1) % heroTexts.length];
+        el.style.opacity = 1;
+      }, 400);
+    }, 4000);
+  </script>
+</body>
+</html>
